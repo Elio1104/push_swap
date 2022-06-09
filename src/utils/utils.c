@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 void	ft_error(int *stack)
 {
 	free(stack);
@@ -5,7 +7,7 @@ void	ft_error(int *stack)
 	exit (1);
 }
 
-int	ft_argv_atoi(char *str, int *stack)
+int		ft_argv_atoi(char *str, int *stack)
 {
 	unsigned int		i;
 	int					neg;
@@ -32,7 +34,7 @@ int	ft_argv_atoi(char *str, int *stack)
 	return (num * neg);
 }
 
-int	ft_argv_strlen(char **argv)
+int		ft_argv_strlen(char **argv)
 {
 	int	i;
 
@@ -45,7 +47,7 @@ int	ft_argv_strlen(char **argv)
 	return (i);
 }
 
-void	ft_check_repeat(int *stack, int size)
+int		ft_check_repeat(int *stack, int size)
 {
 	int	i;
 	int	j;
@@ -57,10 +59,27 @@ void	ft_check_repeat(int *stack, int size)
 		while (j < size)
 		{
 			if (stack[i] == stack[j])
+			{
 				ft_error(stack);
+				return (TRUE);
+			}
 			j++;
 		}
 		i++;
 		j = i + 1;
 	}
+	return (FALSE);
+}
+
+int		ft_check_sorted(int *stack, int size)
+{
+	int i;
+	i = 1;
+	while (i < size)
+	{
+		if (stack[i - 1] > stack[i])
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
 }

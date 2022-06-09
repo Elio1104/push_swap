@@ -1,4 +1,6 @@
-void   ft_push_swap(char **argv)
+#include "push_swap.h"
+
+void	ft_push_swap(char **argv)
 {
     t_stack stack;
 	int     size;
@@ -19,11 +21,14 @@ void   ft_push_swap(char **argv)
 	stack.size_b = 0;
 	while (++i < size)
 		stack.a[i] = ft_argv_atoi(argv[i], stack.a);
-    ft_check_repeat(stack.a, size);
+    if (ft_check_repeat(stack.a, size) == FALSE)
+		ft_sorting(&stack, size);
+	free(stack.a);
+	free(stack.b);
 }
 
 
-int     main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
     if (argc > 1)
     {

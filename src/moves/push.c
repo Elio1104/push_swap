@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 void    ft_pa(t_stack *stack)
 {
     int i;
