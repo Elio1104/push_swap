@@ -1,0 +1,3 @@
+[submodule "libft"]
+	path = libft
+	url = https://github.com/Eliomena/Libft-w-gnl-printf.git
