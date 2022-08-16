@@ -11,6 +11,8 @@ typedef struct s_stack
 
 # define TRUE 1
 # define FALSE 0
+# define ASCENDING 1
+# define DESCENDING 0
 
 //Moves
 void    ft_sa(t_stack *stack);
