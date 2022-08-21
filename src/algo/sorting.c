@@ -46,7 +46,7 @@ void    ft_sort_3(t_stack *s)
 
 void	ft_sorting(t_stack *stack, int size)
 {
-	if(ft_check_sorted(stack->a, stack->size_a) == 0)
+	if(ft_check_sorted(stack->a, stack->size_a, ASCENDING) == FALSE)
 	{
 		if (size == 2)
 			ft_sa(stack);

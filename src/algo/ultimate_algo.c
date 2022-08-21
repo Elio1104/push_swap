@@ -1,5 +1,59 @@
 #include "push_swap.h"
 
+void	ft_quicksort_3(t_stack *stack, int len)
+{
+	if (len == 3 && stack->size_a == 3)
+		ft_sort_three_a(stack);
+	else if (len == 2)
+	{
+		if (stack->a[0] > stack->a[1])
+			ft_sa(stack);
+	}
+	else if (len == 3)
+	{
+		while (len != 3 || !(stack->a[0] < stack->a[1]
+				&& stack->a[1] < stack->a[2]))
+		{
+			if (len == 3 && stack->a[0] > stack->a[1] && stack->a[2])
+				ft_sa(stack);
+			else if (len == 3 && !(stack->a[2] > stack->a[0]
+					&& stack->a[2] > stack->a[1]))
+				len = ft_push(stack, len, 0);
+			else if (stack->a[0] > stack->a[1])
+				ft_sa(stack);
+			else if (len++)
+				ft_pa(stack);
+		}
+	}
+}
+
+int	ft_sort_small_b(t_stack *s, int len)
+{
+	if (len == 1)
+		ft_pa(s);
+	else if (len == 2)
+	{
+		if (s->b[0] < s->b[1])
+			ft_sb(s);
+		while (len--)
+			ft_pa(s);
+	}
+	else if (len == 3)
+	{
+		while (len || !(s->a[0] < s->a[1] && s->a[1] < s->a[2]))
+		{
+			if (len == 1 && s->a[0] > s->a[1])
+				ft_sa(s);
+			else if (len == 1 || (len >= 2 && s->b[0] > s->b[1])
+				|| (len == 3 && s->b[0] > s->b[2]))
+				len = ft_push(s, len, 1);
+			else
+				ft_sb(s);
+		}
+	}
+	return (0);
+}
+
 int ft_get_mediane(int *mediane, int *stack, int size)
 {
     int *tmp_stack;
