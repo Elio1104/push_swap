@@ -71,15 +71,30 @@ int		ft_check_repeat(int *stack, int size)
 	return (FALSE);
 }
 
-int		ft_check_sorted(int *stack, int size)
+int	ft_check_sorted(int *stack, int size, int order)
 {
-	int i;
-	i = 1;
-	while (i < size)
+	int	i;
+
+	if (order == ASCENDING)
 	{
-		if (stack[i - 1] > stack[i])
-			return (FALSE);
-		i++;
+		i = 1;
+		while (i < size)
+		{
+			if (stack[i - 1] > stack[i])
+				return (FALSE);
+			i++;
+		}
+		return (TRUE);
 	}
-	return (TRUE);
+	else
+	{
+		i = 1;
+		while (i < size)
+		{
+			if (stack[i - 1] < stack[i])
+				return (FALSE);
+			i++;
+		}
+		return (TRUE);
+	}
 }
