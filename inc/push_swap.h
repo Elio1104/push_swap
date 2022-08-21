@@ -32,6 +32,20 @@ void	ft_error(int *stack);
 int     ft_argv_atoi(char *str, int *stack);
 int		ft_argv_strlen(char **argv);
 int		ft_check_repeat(int *stack, int size);
-int		ft_check_sorted(int *stack, int size);
+int		ft_check_sorted(int *stack, int size, int order);
+
+//Main
+void	ft_push_swap(char **argv);
+
+//Sorting
+void	ft_sort_tmp(int *tmp_stack, int size);
+void    ft_sort_3(t_stack *s);
+void	ft_sorting(t_stack *stack, int size);
+
+void	ft_quicksort_3(t_stack *stack, int len);
+int	    ft_sort_small_b(t_stack *s, int len);
+int     ft_get_mediane(int *mediane, int *stack, int size);
+int     ft_quicksort_a(t_stack *stack, int size);
+int	    ft_quicksort_b(t_stack *stack, int size);
 
 #endif
