@@ -55,5 +55,14 @@ void	ft_sorting(t_stack *stack, int size)
 		else
 			ft_quicksort_a(stack, size);
 	}
-	return (0);
+}
+
+int	ft_push(t_stack *stack, int len, int operation)
+{
+	if (operation == 0)
+		ft_pb(stack);
+	else
+		ft_pa(stack);
+	len--;
+	return (len);
 }

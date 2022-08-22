@@ -3,7 +3,7 @@
 void	ft_quicksort_3(t_stack *stack, int len)
 {
 	if (len == 3 && stack->size_a == 3)
-		ft_sort_three_a(stack);
+		ft_sort_3(stack);
 	else if (len == 2)
 	{
 		if (stack->a[0] > stack->a[1])
