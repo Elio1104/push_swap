@@ -5,7 +5,7 @@ SHELL	=	/bin/bash
 NAME		= push_swap
 LIBFT		= libft
 INC			= inc
-HEADER		= -I inc
+HEADER		= -I libft/includes/ -I inc/
 SRC_DIR		= src/
 OBJ_DIR		= obj/
 CC			= gcc
@@ -30,16 +30,17 @@ WHITE		=	\033[0;97m
 
 ALG_DIR		=	algo/
 ALG_FILES	=	push_swap sorting ultimate_algo
+
 MOV_DIR		=	moves/
 MOV_FILES	=	swap rotate reverse_rotate push
+
 UTI_DIR		=	utils/
 UTI_FILES	=	utils
 
-ALGO_FILES	=	$(addprefix $(ALG_DIR), $(ALG_FILES))
-MOVES_FILES	=	$(addprefix $(MOV_DIR), $(MOV_FILES))
-UTILS_FILES	=	$(addprefix $(UTI_DIR), $(UTI_FILES))
+SRC_FILES	+=	$(addprefix $(ALG_DIR), $(ALG_FILES))
+SRC_FILES	+=	$(addprefix $(MOV_DIR), $(MOV_FILES))
+SRC_FILES	+=	$(addprefix $(UTI_DIR), $(UTI_FILES))
 
-SRC_FILES	=	$(ALGO_FILES) $(MOVES_FILES) $(UTILS_FILES)
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -61,8 +62,15 @@ all:		$(NAME)
 $(NAME):	$(OBJ) $(OBJF)
 			@$(CC) $(FLAGS) $(OBJ) $(HEADER) libft.a -o $(NAME)		
 
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
+			@$(ECHO) -n "$(ORANGE)=$(DEF_COLOR)"
+			@$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
+
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
+			@mkdir -p $(OBJ_DIR)$(ALG_DIR)
+			@mkdir -p $(OBJ_DIR)$(MOV_DIR)
+			@mkdir -p $(OBJ_DIR)$(UTI_DIR)
 			@touch $(OBJF)
 
 clean:
