@@ -1,6 +1,11 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include <stdlib.h>
+#include "libft.h"
+#include "ft_printf.h"
+#include "get_next_line.h"
+
 typedef struct s_stack
 {
     int *a;
@@ -41,6 +46,7 @@ void	ft_push_swap(char **argv);
 void	ft_sort_tmp(int *tmp_stack, int size);
 void    ft_sort_3(t_stack *s);
 void	ft_sorting(t_stack *stack, int size);
+int	    ft_push(t_stack *stack, int len, int operation);
 
 void	ft_quicksort_3(t_stack *stack, int len);
 int	    ft_sort_small_b(t_stack *s, int len);
