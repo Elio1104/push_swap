@@ -23,6 +23,12 @@ void	ft_push_swap(char **argv)
 		stack.a[i] = ft_argv_atoi(argv[i], stack.a);
     if (ft_check_repeat(stack.a, size) == FALSE)
 		ft_sorting(&stack, size);
+	i = 0;
+	while (i < stack.size_a)
+	{
+		ft_printf("%d\n", stack.a[i]);
+		i++;
+	}
 	free(stack.a);
 	free(stack.b);
 }
