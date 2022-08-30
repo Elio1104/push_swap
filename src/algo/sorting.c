@@ -53,7 +53,7 @@ void	ft_sorting(t_stack *stack, int size)
 		if (size == 3)
 			ft_sort_3(stack);
 		else
-			ft_quicksort_a(stack, size);
+			ft_quicksort_a(stack, size, 0);
 	}
 }
 

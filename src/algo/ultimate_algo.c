@@ -63,7 +63,7 @@ int ft_get_mediane(int *mediane, int *stack, int size)
     if (!tmp_stack)
         return (0);
     i = 0;
-    while(i++ < size)
+    while(i < size)
         tmp_stack[i] = stack[i];
     ft_sort_tmp(tmp_stack, size);
     *mediane = tmp_stack[size / 2];
@@ -71,13 +71,11 @@ int ft_get_mediane(int *mediane, int *stack, int size)
     return (1);
 }
 
-int ft_quicksort_a(t_stack *stack, int size)
+int ft_quicksort_a(t_stack *stack, int size, int swap)
 {
     int mediane;
     int i;
-    int swap;
     
-    swap = 0;
     if (ft_check_sorted(stack->a, stack->size_a, ASCENDING) == TRUE)
         return (1);
     i = size;
@@ -97,18 +95,16 @@ int ft_quicksort_a(t_stack *stack, int size)
     }
     while (i / 2 + i % 2 != stack->size_a && swap--)
     	ft_rra(stack);
-	return (ft_quicksort_a(stack, i / 2 + i % 2)
-		&& ft_quicksort_b(stack, i / 2));
+	return (ft_quicksort_a(stack, i / 2 + i % 2, 0)
+		&& ft_quicksort_b(stack, i / 2, 0));
 	return (1);
 }
 
-int	ft_quicksort_b(t_stack *stack, int size)
+int	ft_quicksort_b(t_stack *stack, int size, int swap)
 {
 	int	mediane;
 	int	i;
-    int swap;
 
-    swap = 0;
 	if (ft_check_sorted(stack->b, size, DESCENDING) == 1)
 		while (size--)
 			ft_pa(stack);
@@ -129,6 +125,6 @@ int	ft_quicksort_b(t_stack *stack, int size)
 	}
 	while (i / 2 != stack->size_b && swap--)
 		ft_rrb(stack);
-	return (ft_quicksort_a(stack, i / 2 + i % 2)
-		&& ft_quicksort_b(stack, i / 2));
+	return (ft_quicksort_a(stack, i / 2 + i % 2, 0)
+		&& ft_quicksort_b(stack, i / 2, 0));
 }
