@@ -47,7 +47,7 @@ int		ft_argv_strlen(char **argv)
 	return (i);
 }
 
-int		ft_check_repeat(int *stack, int size)
+void	ft_check_repeat(int *stack, int size)
 {
 	int	i;
 	int	j;
@@ -59,16 +59,12 @@ int		ft_check_repeat(int *stack, int size)
 		while (j < size)
 		{
 			if (stack[i] == stack[j])
-			{
 				ft_error(stack);
-				return (TRUE);
-			}
 			j++;
 		}
 		i++;
 		j = i + 1;
 	}
-	return (FALSE);
 }
 
 int	ft_check_sorted(int *stack, int size, int order)

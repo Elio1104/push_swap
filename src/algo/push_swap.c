@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alondot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/12 13:59:21 by alondot           #+#    #+#             */
+/*   Updated: 2022/09/12 13:59:25 by alondot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_push_swap(char **argv)
@@ -21,14 +33,8 @@ void	ft_push_swap(char **argv)
 	stack.size_b = 0;
 	while (++i < size)
 		stack.a[i] = ft_argv_atoi(argv[i], stack.a);
-    if (ft_check_repeat(stack.a, size) == FALSE)
-		ft_sorting(&stack, size);
-	i = 0;
-	while (i < stack.size_a)
-	{
-		ft_printf("%d\n", stack.a[i]);
-		i++;
-	}
+    ft_check_repeat(stack.a, size);
+	ft_sorting(&stack, size);
 	free(stack.a);
 	free(stack.b);
 }
