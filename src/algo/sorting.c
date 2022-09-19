@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alondot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/19 14:41:21 by alondot           #+#    #+#             */
+/*   Updated: 2022/09/19 14:42:49 by alondot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_sort_tmp(int *tmp_stack, int size)
@@ -24,9 +36,9 @@ void	ft_sort_tmp(int *tmp_stack, int size)
 	}
 }
 
-void    ft_sort_3(t_stack *s)
+void	ft_sort_3(t_stack *s)
 {
-    if (s->a[0] > s->a[1] && s->a[0] < s->a[2] && s->a[1] < s->a[2])
+	if (s->a[0] > s->a[1] && s->a[0] < s->a[2] && s->a[1] < s->a[2])
 		ft_sa(s);
 	if (s->a[0] > s->a[1] && s->a[0] > s->a[2] && s->a[1] > s->a[2])
 	{
@@ -46,7 +58,7 @@ void    ft_sort_3(t_stack *s)
 
 void	ft_sorting(t_stack *stack, int size)
 {
-	if(ft_check_sorted(stack->a, stack->size_a, ASCENDING) == FALSE)
+	if (ft_check_sorted(stack->a, stack->size_a, ASCENDING) == FALSE)
 	{
 		if (size == 2)
 			ft_sa(stack);

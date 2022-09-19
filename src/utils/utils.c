@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alondot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/19 15:03:18 by alondot           #+#    #+#             */
+/*   Updated: 2022/09/19 15:04:22 by alondot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_error(int *stack)
@@ -7,7 +19,7 @@ void	ft_error(int *stack)
 	exit (1);
 }
 
-int		ft_argv_atoi(char *str, int *stack)
+int	ft_argv_atoi(char *str, int *stack)
 {
 	unsigned int		i;
 	int					neg;
@@ -34,7 +46,7 @@ int		ft_argv_atoi(char *str, int *stack)
 	return (num * neg);
 }
 
-int		ft_argv_strlen(char **argv)
+int	ft_argv_strlen(char **argv)
 {
 	int	i;
 

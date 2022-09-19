@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ultimate_algo.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alondot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/19 14:43:02 by alondot           #+#    #+#             */
+/*   Updated: 2022/09/19 14:50:46 by alondot          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_quicksort_3(t_stack *stack, int len)
@@ -54,50 +66,50 @@ int	ft_sort_small_b(t_stack *s, int len)
 	return (0);
 }
 
-int ft_get_mediane(int *mediane, int *stack, int size)
+int	ft_get_mediane(int *mediane, int *stack, int size)
 {
-    int *tmp_stack;
-    int i;
+	int	*tmp_stack;
+	int	i;
 
-    tmp_stack = (int *)malloc(size * sizeof(int));
-    if (!tmp_stack)
-        return (0);
-    i = 0;
-    while(i < size)
-    {
-        tmp_stack[i] = stack[i];
-        i++;
-    }
-    ft_sort_tmp(tmp_stack, size);
-    *mediane = tmp_stack[size / 2];
-    free(tmp_stack);
-    return (1);
+	tmp_stack = (int *)malloc(size * sizeof(int));
+	if (!tmp_stack)
+		return (0);
+	i = 0;
+	while (i < size)
+	{
+		tmp_stack[i] = stack[i];
+		i++;
+	}
+	ft_sort_tmp(tmp_stack, size);
+	*mediane = tmp_stack[size / 2];
+	free(tmp_stack);
+	return (1);
 }
 
-int ft_quicksort_a(t_stack *stack, int size, int swap)
+int	ft_quicksort_a(t_stack *stack, int size, int swap)
 {
-    int mediane;
-    int i;
-    
-    if (ft_check_sorted(stack->a, size, ASCENDING) == TRUE)
-        return (1);
-    i = size;
-    if (size <= 3)
-    {
-        ft_quicksort_3(stack, size);
-        return (1);
-    }
-    if (!ft_get_mediane(&mediane, stack->a, size))
-        return (0);
-    while (size != i / 2 + i % 2)
-    {
-        if (stack->a[0] < mediane && (size--))
+	int	mediane;
+	int	i;
+
+	if (ft_check_sorted(stack->a, size, ASCENDING) == TRUE)
+		return (1);
+	i = size;
+	if (size <= 3)
+	{
+		ft_quicksort_3(stack, size);
+		return (1);
+	}
+	if (!ft_get_mediane(&mediane, stack->a, size))
+		return (0);
+	while (size != i / 2 + i % 2)
+	{
+		if (stack->a[0] < mediane && (size--))
 			ft_pb(stack);
 		else if (++swap)
 			ft_ra(stack);
-    }
-    while (i / 2 + i % 2 != stack->size_a && swap--)
-    	ft_rra(stack);
+	}
+	while (i / 2 + i % 2 != stack->size_a && swap--)
+		ft_rra(stack);
 	return (ft_quicksort_a(stack, i / 2 + i % 2, 0)
 		&& ft_quicksort_b(stack, i / 2, 0));
 	return (1);
